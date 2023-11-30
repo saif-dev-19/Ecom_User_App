@@ -1,5 +1,6 @@
 import 'package:ecom_user/providers/user_provider.dart';
 import 'package:ecom_user/utils/widget_functions.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +11,8 @@ class UserProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("My Profile"),),
+      backgroundColor: Colors.grey.shade100,
+      appBar: AppBar(title: const Text("My Profile"),backgroundColor: Colors.orangeAccent,),
       body: Consumer<UserProvider>(
         builder:(context, provider, child) =>ListView(
           children: [
@@ -36,12 +38,13 @@ class UserProfilePage extends StatelessWidget {
 
               trailing: IconButton(
                 onPressed: (){
-                  showSigleTextInputDialog(
+                  /*showSigleTextInputDialog(
                       context: context,
                       title: "Edit Number",
                       onSave: (value)async{
                         await provider.updateUserFieldNumber(value);
-                      });
+                      });*/
+                  verifyPhone("+8801626478828");
                 },
                 icon: Icon(Icons.edit),
               ),
@@ -76,4 +79,17 @@ class UserProfilePage extends StatelessWidget {
                   ),
                 ));
   }
+
+  verifyPhone(String phone)async{
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: phone,
+      verificationCompleted: (PhoneAuthCredential credential) {},
+      verificationFailed: (FirebaseAuthException e) {},
+      codeSent: (String verificationId, int? resendToken) {
+        print("Code Sent");
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
+  }
+
 }

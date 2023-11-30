@@ -24,6 +24,7 @@ class ProductDetailsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(product.name),
+        backgroundColor: Colors.orangeAccent,
       ),
       body: ListView(
         children: [
@@ -46,6 +47,7 @@ class ProductDetailsPage extends StatelessWidget {
               builder: (context, provider, child) {
                 final isInCart = provider.isInCart(product.id!);
                 return ElevatedButton.icon(
+                  style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.grey.shade300)),
                   onPressed: ()async{
                     EasyLoading.show(status: "Please wait");
                     if(isInCart){
@@ -63,6 +65,7 @@ class ProductDetailsPage extends StatelessWidget {
             ),
           ),
           Card(
+            color: Colors.grey,
             child: Padding(padding: EdgeInsets.all(16.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -82,6 +85,7 @@ class ProductDetailsPage extends StatelessWidget {
                   ),
 
                   ElevatedButton(
+                    style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.grey.shade300)),
                       onPressed: ()async{
                           EasyLoading.show(status: "Please Wait");
                          await productProvider.addRating(id, rating);

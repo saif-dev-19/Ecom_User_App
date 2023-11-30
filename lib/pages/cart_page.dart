@@ -14,7 +14,9 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.orangeAccent,
         title: const Text("My Cart"),
       ),
       body: Consumer<CartProvider>(
@@ -33,6 +35,7 @@ class CartPage extends StatelessWidget {
               ),
             ),
             Card(
+              color: Colors.teal.shade50,
               child: Padding(
                 padding: EdgeInsets.all(24.0),
                 child: Row(
@@ -47,6 +50,7 @@ class CartPage extends StatelessWidget {
                       child: const Text("CHECKOUT",
                         style: const TextStyle(fontSize: 20),
                       ),
+                      style:ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey.shade400)),
                     ),
                   ],
                 ),

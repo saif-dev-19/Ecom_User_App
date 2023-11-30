@@ -19,7 +19,8 @@ class GridProductItem extends StatelessWidget {
     return InkWell(
       onTap: ()=> Navigator.pushNamed(context, ProductDetailsPage.routeName, arguments: product.id),
       child: Card(
-        color: Colors.white,
+        clipBehavior:Clip.antiAlias,
+        color: Colors.grey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -36,11 +37,12 @@ class GridProductItem extends StatelessWidget {
                     errorWidget: (context, url, error) => const Center(
                       child: const Icon(Icons.error),
                     ),
+                    width: double.infinity,
                   ),
                   if(product.discount > 0)Container(
+                    color: Colors.black45,
                     alignment: Alignment.center,
                     height: 50,
-                    color: Colors.black45,
                     child: Text("${product.discount}% OFF",
                       style: TextStyle(fontSize: 25,color: Colors.white, fontWeight: FontWeight.bold),
                     ),
@@ -55,7 +57,7 @@ class GridProductItem extends StatelessWidget {
             if(product.discount > 0)RichText(
                 text: TextSpan(
                   text: "$currencySymbol${product.price}",
-                  style: TextStyle(color: Colors.grey, fontSize: 16,decoration: TextDecoration.lineThrough),
+                  style: TextStyle(color: Colors.black, fontSize: 16,decoration: TextDecoration.lineThrough),
                   children: [
                     TextSpan(
                       text: "$currencySymbol${provider.priceAfterDiscount(product.price, product.discount)}",

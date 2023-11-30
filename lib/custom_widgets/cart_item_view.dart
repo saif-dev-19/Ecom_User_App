@@ -14,6 +14,7 @@ class CartItemView extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
     return Card(
+      color: Colors.teal.shade300,
       child: Column(
         children: [
           ListTile(

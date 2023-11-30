@@ -10,18 +10,21 @@ class UserOrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("My Orders"),),
+      appBar: AppBar(title: const Text("My Orders"),backgroundColor: Colors.orangeAccent,),
       body: Consumer<OrderProvider>(
         builder: (context, provider, child) => ListView.builder(
           itemCount: provider.userOrderList.length,
           itemBuilder: (context, index) {
             final order = provider.userOrderList[index];
-            return ListTile(
-              title: Text(order.orderId),
-              subtitle: Text("$currencySymbol${order.totalAmount}"),
-              trailing: Text(order.orderStatus),
+            return Card(
+              color: Colors.cyan.shade100,
+              child: ListTile(
+                title: Text(order.orderId),
+                subtitle: Text("$currencySymbol${order.totalAmount}"),
+                trailing: Text(order.orderStatus),
+              ),
             );
-          }
+          },
         ),
       ),
     );

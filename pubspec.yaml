@@ -45,6 +45,7 @@ dependencies:
   cloud_firestore:
   firebase_storage:
   firebase_messaging:
+  cloud_functions:
   flutter_easyloading:
   flutter_rating_bar:
   google_sign_in:

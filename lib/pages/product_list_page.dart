@@ -29,24 +29,31 @@ class _ProductListPageState extends State<ProductListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.teal.shade100,
       drawer: const MainDrawer(),
       appBar: AppBar(
+        backgroundColor: Colors.orangeAccent,
         title: const Text("Products"),
         actions: [
          const CartBadgeView(),
         ],
       ),
-      body:Consumer<ProductProvider>(
-        builder: (context, provider, child) => GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.75,
-            ),
-          itemCount: provider.productList.length,
-          itemBuilder: (context, index) {
-            final product = provider.productList[index];
-            return GridProductItem(product: product); 
-          },
+      body:Container(
+        decoration: BoxDecoration(
+          //color: Colors.teal,
+        ),
+        child: Consumer<ProductProvider>(
+          builder: (context, provider, child) => GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.75,
+              ),
+            itemCount: provider.productList.length,
+            itemBuilder: (context, index) {
+              final product = provider.productList[index];
+              return GridProductItem(product: product);
+            },
+          ),
         ),
       ),
     );
