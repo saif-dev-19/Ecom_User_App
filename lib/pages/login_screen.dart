@@ -25,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orangeAccent.shade200,
       body:Form(
         key: _formKey,
         child: Center(
@@ -75,6 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               ElevatedButton(
+                style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.grey.shade300)),
                   onPressed: (){
                     _authenticate(true);
                   },
@@ -85,6 +87,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Text("New User?",style: Theme.of(context).textTheme.titleLarge,),
                   TextButton(
+
+                    style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.grey.shade300),shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))))),
                       onPressed: (){
                         _authenticate(false);
                       },
@@ -96,6 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: const Text("OR"),
               ),
               ElevatedButton(
+                style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.grey.shade300)),
                   onPressed: _googleSignIn,
                   child: const Text("SIGN IN WITH GOOGLE"),
               ),
